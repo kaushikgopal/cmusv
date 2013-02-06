@@ -16,6 +16,10 @@ class SearchController < ApplicationController
   end
 
   def index
-    @docs = SearchController.search(params[:query]) if params[:query].present?
+    query = params[:query]
+    new_query = query.gsub(/[^a-zA-Z 0-9]/," ").strip
+    flash[:notice] = "We've replaced your query \"#{query}\" with \"#{new_query}\"" if new_query != query
+
+    @docs = SearchController.search(new_query)
   end
 end
