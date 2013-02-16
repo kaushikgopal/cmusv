@@ -119,10 +119,10 @@ ActiveRecord::Schema.define(:version => 20121129012448) do
   end
 
   create_table "deliverables", :force => true do |t|
-    t.text     "name"                  #column used for legacy data
+    t.text     "name"
     t.integer  "team_id"
     t.integer  "course_id"
-    t.string   "task_number"           #column used for legacy data
+    t.string   "task_number"
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"

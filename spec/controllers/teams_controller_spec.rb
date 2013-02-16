@@ -16,6 +16,10 @@ describe TeamsController do
         get :show, :id => team.to_param, :course_id => team.course.to_param
       end
 
+      it "renders the show view" do
+        response.should render_template("show")
+      end
+
       specify { assigns(:course).should == team.course }
       specify { assigns(:team).should == team }
     end
@@ -33,9 +37,14 @@ describe TeamsController do
       before do
         get :index, :course_id => course.to_param
       end
+    
+      it "renders the index view" do
+        response.should render_template("index")
+      end
 
       specify { assigns(:teams).should_not be_nil }
       specify { assigns(:course).should == course }
+
     end
 
     describe "not GET new" do
@@ -44,6 +53,13 @@ describe TeamsController do
       end
 
       it_should_behave_like "permission denied"
+    end
+
+    describe "GET twiki_index" do
+      it "should render partial twiki_index" do
+        get :twiki_index
+        response.should render_template :twiki_index
+      end
     end
 
     describe "not GET twiki_new" do
@@ -97,11 +113,15 @@ describe TeamsController do
       specify { assigns(:team).should_not be_nil }
     end
 
+
+
     describe "GET edit" do
       before do
         get :edit, :id => team.to_param, :course_id => team.course.to_param
       end
-
+      it "renders the edit view" do
+        response.should render_template("edit")
+      end
       specify { assigns(:course).should == team.course }
       specify { assigns(:team).should == team }
     end
@@ -196,7 +216,6 @@ describe TeamsController do
       it_should_behave_like "permission denied"
     end
   end
-
 
   context "any admin can" do
     before do

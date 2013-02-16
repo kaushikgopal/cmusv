@@ -13,6 +13,16 @@ describe CoursesController do
     specify { assigns(:all_courses).should == false }
   end
 
+
+  context "renders views" do
+    it "renders the show view" do
+      get :show, :id => course.to_param
+      response.should render_template("show")
+    end
+
+  end
+
+
   context "any user can" do
     before do
       login(FactoryGirl.create(:student_sam))

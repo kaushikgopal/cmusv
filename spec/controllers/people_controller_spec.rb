@@ -2,28 +2,27 @@ require "spec_helper"
 
 describe PeopleController do
   context "any user can" do
+
     before do
       @student_sam = FactoryGirl.create(:student_sam_user, :is_part_time=>'f', :masters_program=>'SE', :is_active=>'t')
       login(@student_sam)
     end
 
-    # describe "GET index" do
-    #   it "should assign all active people to people" do
-    #     get :index
-    #     assigns(:people).should == [@student_sam]
-    #   end
-
-    #   it "should sort people by name" do
-    #     get :index
-    #     assigns(:people).should == [@student_sam]
-    #   end
-    # end
+    describe "GET #index" do
+      it "renders the :index view" do
+        get :index
+        response.should render_template :index
+      end
+      it "populates an array with default key contacts" do
+       get :index
+       assigns(:people).should eql([])
+      end
+    end
 
     describe "GET people#search" do
         before(:each) do
             @faculty_frank = FactoryGirl.create(:faculty_frank_user)
             @student_sally = FactoryGirl.create(:student_sally_user, :is_part_time=>'t', :graduation_year=>'2012', :is_active=>'t')
-
         end
 
         # it "should find student_sam_user in the search results" do
