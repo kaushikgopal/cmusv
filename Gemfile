@@ -68,12 +68,8 @@ group :development, :test do
   gem 'taps'
 #  gem 'rake'
   gem 'ruby-debug19'
-#  gem 'ruby-debug-base19x'
-#  gem 'ruby-debug-ide' #'0.4.6'
-
-  gem 'ruby-debug-base19x', '0.11.30.pre10'
-  gem 'ruby-debug-ide', '0.4.17.beta16'
-  gem 'linecache19', '0.5.13' #Install locally from http://rubyforge.org/frs/?group_id=8883&release_id=46302
+  gem 'ruby-debug-base19x'
+  gem 'ruby-debug-ide' #'0.4.6'
 
   gem 'shoulda'
 #  gem 'hanna'
@@ -82,7 +78,6 @@ group :development, :test do
   gem 'factory_girl_rails', '3.4.0'
   gem 'capybara'
   gem 'jasmine'
-  gem 'cover_me'
 
 #  gem 'morning_glory'
 
