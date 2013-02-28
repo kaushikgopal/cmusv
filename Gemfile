@@ -79,6 +79,7 @@ group :development, :test do
   gem 'capybara'
   gem 'jasmine'
   gem 'launchy'
+  gem 'simplecov'
 
 #  gem 'morning_glory'
 

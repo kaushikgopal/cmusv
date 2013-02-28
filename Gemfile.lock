@@ -264,6 +264,10 @@ GEM
       rubyzip
     sequel (3.20.0)
     shoulda (2.11.3)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.0)
       rack (>= 1.0)
     spreadsheet (0.7.4)
@@ -329,6 +333,7 @@ DEPENDENCIES
   ruby-debug19
   seedbank
   shoulda
+  simplecov
   spreadsheet
   taps
   thin
