@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129012448) do
+ActiveRecord::Schema.define(:version => 20130218170328) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20121129012448) do
     t.integer  "feedback_file_size"
     t.datetime "feedback_updated_at"
     t.integer  "assignment_id"
-    t.string   "private_note"
+    t.text     "private_note"
   end
 
   add_index "deliverables", ["assignment_id"], :name => "index_deliverables_on_assignment_id"

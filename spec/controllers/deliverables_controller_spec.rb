@@ -15,7 +15,7 @@ describe DeliverablesController do
       before(:each) do
         @course = mock_model(Course, :faculty => [@faculty_frank], :course_id => 42)
         @deliverable = stub_model(Deliverable, :course_id => @course.id)
-        Deliverable.stub(:find_all_by_course_id).and_return([@deliverable, @deliverable])
+        Deliverable.stub_chain(:where, :all).and_return([@deliverable, @deliverable])
         Course.stub(:find).and_return(@course)
       end
 
@@ -51,6 +51,20 @@ describe DeliverablesController do
 
         it_should_behave_like "permission denied"
       end
+    end
+
+    describe "GET student_deliverables_for_course" do
+
+      it 'assigns assignments' do
+        login(@student_sam)
+        @course = FactoryGirl.build(:course)
+        @assignment = FactoryGirl.build(:assignment)
+        Course.stub(:find).and_return(@course)
+        @course.stub(:assignments).and_return([@assignment])
+        get :student_deliverables_and_grades_for_course, :course_id => @course.id
+        assigns(:assignments).should == [@assignment]
+      end
+
     end
 
 
